@@ -13,6 +13,16 @@
   }
 }
 
+@media (min-width: 576px){
+  .main-container{
+    margin-right: -60px;
+    margin-left: -60px;
+  }
+}
+.dashboard-card {
+  width: 100%;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -41,3 +51,14 @@
   padding: 10px;
 }
 
+.banner {
+  background-image: url("resources/cityBanner.jpg");
+  background-size: cover;
+  color: ghostwhite;
+  text-shadow: 2px 2px black;
+}
+
+.main-container{
+  margin-right: -60px;
+  margin-left: -60px;
+}
