@@ -12,6 +12,10 @@ import ManagerDashboard from "./manager/ManagerDashboard";
 import ExpenseDashboard from "./expense/ExpenseDashboard";
 import NotFound from "./NotFound";
 import Home from "./Home";
+import Card from "react-bootstrap/Card";
+import managers from "../resources/managers.jpg"
+import cities from "../resources/cities.jpg"
+import expenses from "../resources/expenses.jpg"
 
 const Dashboard = () => {
 
@@ -40,20 +44,44 @@ const Dashboard = () => {
                         </Jumbotron>
                     </Col>
                 </Row>
-                <Row className={"p-3"}>
-                    <Col className={"p-0 btn-menu"}>
+                <Row className={"p-0"}>
+                    <Col xs={12} sm={12} md={12} lg={4} className={" w-75"}>
                         <NavLink to={"/cities"}>
-                            <Button variant={"outline-primary"} block>Cities</Button>
+                            <Card className="bg-dark text-white">
+                                <Card.Img src={cities} alt="Card image" className={"menu-img"}/>
+                                <Card.ImgOverlay>
+                                    <Card.Title className={"menu-text"}>Cities</Card.Title>
+                                    <Card.Text className={"menu-text"}>
+                                        Register a city and begin tracking all your expenses in it!
+                                    </Card.Text>
+                                </Card.ImgOverlay>
+                            </Card>
                         </NavLink>
                     </Col>
-                    <Col className={"p-0 btn-menu"}>
+                    <Col xs={12} sm={12} md={12} lg={4} className={" w-75"}>
                         <NavLink to={"/managers"}>
-                            <Button variant={"outline-primary"} block>Managers</Button>
+                            <Card className="bg-dark text-white">
+                                <Card.Img src={managers} alt="Card image" className={"menu-img"}/>
+                                <Card.ImgOverlay>
+                                    <Card.Title className={"menu-text"}>Managers</Card.Title>
+                                    <Card.Text className={"menu-text"}>
+                                        The folks in charge of paying for the expenses!
+                                    </Card.Text>
+                                </Card.ImgOverlay>
+                            </Card>
                         </NavLink>
                     </Col>
-                    <Col className={"p-0 btn-menu"}>
+                    <Col xs={12} sm={12} md={12} lg={4} className={" w-75"}>
                         <NavLink to={"/expenses"}>
-                            <Button variant={"outline-primary"} block>Expenses</Button>
+                            <Card className="bg-dark text-white">
+                                <Card.Img src={expenses} alt="Card image" className={"menu-img"}/>
+                                <Card.ImgOverlay>
+                                    <Card.Title className={"menu-text"}>Expenses</Card.Title>
+                                    <Card.Text className={"menu-text"}>
+                                        Everything and anything that is an expense for you!
+                                    </Card.Text>
+                                </Card.ImgOverlay>
+                            </Card>
                         </NavLink>
                     </Col>
                 </Row>

@@ -29,6 +29,12 @@
   text-shadow: 2px 2px black;
 }
 
-.btn-menu > a:hover {
-     text-decoration: none;
+.menu-img {
+  object-fit: cover;
+  height: 120px;
+}
+
+.menu-text {
+  color: ghostwhite;
+  text-shadow: 1px 1px black;
 }
