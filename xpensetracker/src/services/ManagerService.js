@@ -11,8 +11,8 @@ export const getManagers = () => {
     })
 }
 
-export const getManagersInCity = city => {
-    return axios.get(`${url}/all/city?city=${city}`).then(response => {
+export const getManagersInCity = cityId => {
+    return axios.get(`${url}/all/city?cityId=${cityId}`).then(response => {
         return  response["data"]
     }).catch( error => {
         return error

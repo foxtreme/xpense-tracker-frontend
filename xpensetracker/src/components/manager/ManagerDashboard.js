@@ -8,6 +8,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ManagerCreation from "./ManagerCreation";
 import CustomToast from "../CustomToast";
 import ManagerEdition from "./ManagerEdition";
+import ManagerSummary from "./ManagerSummary";
 
 const ManagerDashboard = () => {
 
@@ -108,6 +109,7 @@ const ManagerDashboard = () => {
                     </Table>
                 </Col>
                 <Col md={5} lg={5}>
+                    <ManagerSummary managerList={managerList}/>
                     { displayCreateForm &&  <ManagerCreation submitManager={onClickSubmitNewManager}/>}
                     { displayEditForm &&  <ManagerEdition manager={selectedManager} submitManager={onClickSubmitExistingManager}/>}
                     { showToast && <CustomToast message={toastMessage} showToast={showToast} setShowToast={setShowToast}/>}

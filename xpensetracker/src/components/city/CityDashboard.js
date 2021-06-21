@@ -8,11 +8,13 @@ import CustomToast from "../CustomToast";
 import {deleteCity, getCities, postCity, putCity} from "../../services/CityService";
 import CityCreation from "./CityCreation";
 import CityEdition from "./CityEdition";
+import CityInfo from "./CityInfo";
 
 const CityDashboard = () => {
 
     const [displayCreateForm, setDisplayCreateForm] = useState(false)
     const [displayEditForm, setDisplayEditForm] = useState(false)
+    const [displayDetailView, setDisplayDetailView] = useState(false)
     const [cityList, setCityList] = useState([])
     const [selectedCity, setSelectedCity] = useState(null)
     const [showToast, setShowToast] = useState(false)
@@ -26,12 +28,21 @@ const CityDashboard = () => {
     const onClickNewCity = () => {
         setDisplayCreateForm(true)
         setDisplayEditForm(false)
+        setDisplayDetailView(false)
     }
 
     const onClickEditCity = (city) => {
         setDisplayCreateForm(false)
+        setDisplayDetailView(false)
         setDisplayEditForm(true)
         setSelectedCity(city)
+    }
+
+    const onClickViewCity = (city) => {
+        setSelectedCity(city);
+        setDisplayCreateForm(false)
+        setDisplayEditForm(false)
+        setDisplayDetailView(true)
     }
 
     async function onClickSubmitNewCity(city){
@@ -94,12 +105,13 @@ const CityDashboard = () => {
                         </thead>
                         <tbody>
                         {cityList.length>0 && cityList.map(city => (
-                            <tr key={city.id}>
+                            <tr key={city.id} >
                                 <td>{city.name}</td>
                                 <td>{city.country}</td>
-                                <td>{city.description}</td>
+                                <td>{city.description.slice(0,70)}...</td>
                                 <td className={"text-right"}>
                                     <ButtonGroup aria-label="city-actions">
+                                        <Button size={"sm"} variant="outline-success" onClick={() => onClickViewCity(city)}>View</Button>
                                         <Button size={"sm"} variant="outline-info" onClick={() => onClickEditCity(city)}>Edit</Button>
                                         <Button size={"sm"} variant="outline-danger" onClick={() => deleteSingleCity(city.id)}>Remove</Button>
                                     </ButtonGroup>
@@ -112,6 +124,7 @@ const CityDashboard = () => {
                 <Col md={5} lg={5}>
                     { displayCreateForm &&  <CityCreation submitCity={onClickSubmitNewCity}/>}
                     { displayEditForm &&  <CityEdition city={selectedCity} submitCity={onClickSubmitExistingCity}/>}
+                    { displayDetailView && <CityInfo city={selectedCity}/>}
                     { showToast && <CustomToast message={toastMessage} showToast={showToast} setShowToast={setShowToast}/>}
                 </Col>
             </Row>
